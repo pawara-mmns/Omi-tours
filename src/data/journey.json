@@ -1,0 +1,133 @@
+{
+  "title": "Across the Living Island",
+  "intro": "A ten-day passage from the lagoons of Negombo to the island’s southern shore, by road, rail and river.",
+  "days": [
+    {
+      "id": 1,
+      "title": "Arrival by the sea",
+      "route": "Katunayake → Negombo",
+      "place": "Negombo",
+      "description": "Meet your transfer at Katunayake Airport. The drive to Negombo takes around 40 minutes. Leave the rest of the day open for the beach.",
+      "overnight": "Negombo",
+      "image": "south-coast"
+    },
+    {
+      "id": 2,
+      "title": "Into elephant country",
+      "route": "Negombo → Habarana",
+      "place": "Habarana",
+      "description": "After breakfast, drive inland for about 3½ hours. Check in before an evening jeep safari in search of elephants.",
+      "overnight": "Habarana",
+      "image": "habarana"
+    },
+    {
+      "id": 3,
+      "title": "A village morning, a rock at sunset",
+      "route": "Habarana → Pidurangala",
+      "place": "Pidurangala",
+      "description": "Spend the morning on a village visit and return to the hotel. In the evening, travel about 30 minutes to Pidurangala and climb for sunset views of Sigiriya Rock Fortress.",
+      "overnight": "Habarana",
+      "image": "pidurangala"
+    },
+    {
+      "id": 4,
+      "title": "The arts of Kandy",
+      "route": "Habarana → Kandy",
+      "place": "Kandy",
+      "description": "Allow about three hours for the drive to Kandy. Visit a spice and herbal garden, explore a gem factory and museum, and watch a cultural dance performance. A visit to the Temple of the Sacred Tooth Relic is optional.",
+      "overnight": "Kandy",
+      "image": "kandy"
+    },
+    {
+      "id": 5,
+      "title": "River water to hill air",
+      "route": "Kandy → Kitulgala → Nuwara Eliya",
+      "place": "Nuwara Eliya",
+      "description": "Travel via Kitulgala for white-water rafting, then continue into the highlands. The sample allows around four hours of driving.",
+      "overnight": "Nuwara Eliya",
+      "image": "kitulgala"
+    },
+    {
+      "id": 6,
+      "title": "The hill-country railway",
+      "route": "Nanu Oya → Ella",
+      "place": "Ella",
+      "description": "Transfer to Nanu Oya station and take the train to Ella. The sample allows for a breakfast-only hotel and dinner at a restaurant in town.",
+      "overnight": "Ella",
+      "image": "hill-rail"
+    },
+    {
+      "id": 7,
+      "title": "Stone arches and a sunset walk",
+      "route": "Ella",
+      "place": "Ella",
+      "description": "Visit Nine Arch Bridge after breakfast. In the evening, walk up Little Adam’s Peak for sunset, then dine in Ella town. The second hotel night is also on a breakfast-only basis.",
+      "overnight": "Ella",
+      "image": "ella"
+    },
+    {
+      "id": 8,
+      "title": "An evening in Yala",
+      "route": "Ella → Yala",
+      "place": "Yala",
+      "description": "Drive about four hours to Yala and check in. Spend the evening on a jeep safari in Yala National Park. Wildlife sightings vary.",
+      "overnight": "Yala",
+      "image": "yala"
+    },
+    {
+      "id": 9,
+      "title": "A stop at the Elephant Transit Home",
+      "route": "Yala → Udawalawe",
+      "place": "Udawalawe",
+      "description": "Travel about 2½ hours to Udawalawe. The example schedules a 3 p.m. visit to the Elephant Transit Home for the calves’ milk feeding. Confirm the viewing time when planning your trip.",
+      "overnight": "Udawalawe",
+      "image": "elephant-home"
+    },
+    {
+      "id": 10,
+      "title": "Choose your stretch of coast",
+      "route": "Udawalawe → South coast",
+      "place": "South coast",
+      "description": "After breakfast, travel to your choice of five beach destinations. The sample tour ends at drop-off. Any beach nights and onward airport transfer are separate arrangements.",
+      "overnight": "",
+      "image": "south-coast"
+    }
+  ],
+  "coasts": [
+    {
+      "name": "Tangalle",
+      "interest": "Beach leisure",
+      "airport": "4 hours",
+      "lon": 80.795,
+      "lat": 6.024
+    },
+    {
+      "name": "Mirissa",
+      "interest": "Whale and dolphin watching",
+      "airport": "3½ hours",
+      "lon": 80.458,
+      "lat": 5.948
+    },
+    {
+      "name": "Weligama",
+      "interest": "Surfing",
+      "airport": "3½ hours",
+      "lon": 80.429,
+      "lat": 5.974
+    },
+    {
+      "name": "Unawatuna",
+      "interest": "Snorkeling",
+      "airport": "3 hours",
+      "lon": 80.249,
+      "lat": 6.019
+    },
+    {
+      "name": "Hikkaduwa",
+      "interest": "Snorkeling",
+      "airport": "2½ hours",
+      "lon": 80.1,
+      "lat": 6.14
+    }
+  ]
+}

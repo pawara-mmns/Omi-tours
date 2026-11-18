@@ -1,0 +1,312 @@
+.photo-album {
+  padding-block: clamp(46px, 6vw, 88px) clamp(32px, 4vw, 62px);
+  scroll-margin-top: 16px;
+}
+.album-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 25px;
+  margin-bottom: 26px;
+}
+.album-heading h2 {
+  font-size: clamp(2.5rem, 4.6vw, 5rem);
+}
+.album-heading > p {
+  max-width: 28ch;
+  font: italic clamp(16px, 1.35vw, 20px)/1.4 var(--serif);
+  color: #4c594b;
+}
+.album-chapters {
+  display: flex;
+  align-items: end;
+  gap: 5px;
+  margin-left: min(3.4vw, 46px);
+  position: relative;
+  z-index: 1;
+}
+.album-chapters button {
+  border: 1px solid #adaf95;
+  border-bottom: 0;
+  border-radius: 8px 9px 0 0;
+  min-height: 43px;
+  padding: 8px clamp(9px, 1.8vw, 28px);
+  color: #40513c;
+  background: #e8e7d6;
+  font: 400 clamp(14px, 1.25vw, 19px)/1.25 var(--serif);
+}
+.album-chapters button[aria-pressed="true"] {
+  background: #314d3c;
+  color: #fff9e8;
+  border-color: #314d3c;
+}
+.album-chapters button:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.album-spread {
+  isolation: isolate;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: clamp(12px, 1.8vw, 28px) clamp(36px, 6vw, 100px);
+  padding: clamp(22px, 3vw, 45px) clamp(24px, 5.3vw, 83px);
+  border: solid #53634a;
+  border-width: 6px 8px 9px;
+  border-radius: 7px 9px 12px 6px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 46.5%,
+      #70604615 49.5%,
+      #64543845 49.94%,
+      #e4daca91 50.12%,
+      #fff7e82b 51%,
+      transparent 54%
+    ),
+    #eee4cc url("/images/journal/paper.webp");
+  box-shadow:
+    inset 0 -4px #c9bda2,
+    inset 0 -6px #f8f2e5,
+    0 9px 18px -15px #303627;
+}
+.album-print {
+  display: block;
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  padding: clamp(6px, 0.75vw, 12px);
+  background: #fffaf0;
+  color: var(--ink);
+  border: 1px solid #d5cbb4;
+  box-shadow: 1px 4px 7px #483e2524;
+  text-align: left;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease;
+}
+.album-print:first-child {
+  grid-row: 1 / 3;
+  width: 96%;
+  align-self: center;
+  justify-self: center;
+  transform: rotate(-2deg);
+}
+.album-print:nth-child(2) {
+  width: 79%;
+  justify-self: start;
+  transform: rotate(1.7deg);
+}
+.album-print:nth-child(3) {
+  width: 79%;
+  justify-self: end;
+  transform: rotate(-1.2deg);
+}
+.album-print:hover,
+.album-print:focus-visible {
+  transform: rotate(0) translateY(-2px);
+  box-shadow: 1px 6px 12px #483e2538;
+}
+.print-image {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+.print-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.album-print:first-child .print-image {
+  aspect-ratio: 0.95;
+}
+.album-print:not(:first-child) .print-image {
+  aspect-ratio: 2.65;
+}
+.print-expand {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  display: grid;
+  place-items: center;
+  height: 26px;
+  width: 26px;
+  border-radius: 50%;
+  background: #fffbeced;
+  color: #35493b;
+}
+.print-caption,
+.print-location {
+  display: block;
+  margin-inline: 3px;
+}
+.print-caption {
+  margin-top: 8px;
+  font: italic clamp(16px, 1.65vw, 26px)/1.15 var(--serif);
+}
+.print-location {
+  margin-block: 5px 3px;
+  font: 500 10px/1.35 var(--sans);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #56624f;
+}
+.album-botanical {
+  position: absolute;
+  right: 3%;
+  top: 16%;
+  width: 14%;
+  opacity: 0.65;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  z-index: -1;
+}
+.photo-album + .invitation {
+  border-top: 1px solid var(--line);
+}
+.album-viewer {
+  padding: 0;
+  border: 0;
+  margin: auto;
+  max-height: 94dvh;
+  width: min(850px, 94vw);
+  max-width: 94vw;
+  overflow-y: auto;
+  color: var(--ink);
+  background: var(--paper) url("/images/journal/paper.webp");
+  border-radius: 4px;
+}
+.album-viewer::backdrop {
+  background: #14271fea;
+}
+body:has(.album-viewer[open]) {
+  overflow: hidden;
+}
+.viewer-sheet {
+  padding: 6px clamp(12px, 2.4vw, 32px) 20px;
+}
+.viewer-toolbar,
+.viewer-details,
+.viewer-paging {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.viewer-toolbar {
+  font: italic 16px var(--serif);
+  min-height: 46px;
+}
+.viewer-toolbar button,
+.viewer-paging button {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+}
+.viewer-toolbar button:hover,
+.viewer-paging button:hover {
+  background: #dce2d1;
+}
+.viewer-image {
+  width: 100%;
+  height: min(61dvh, 560px);
+  object-fit: contain;
+  background: #263a30;
+}
+.viewer-details {
+  margin-top: 15px;
+}
+.viewer-details h3 {
+  font: italic clamp(22px, 3vw, 36px)/1.2 var(--serif);
+}
+.viewer-details a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding-block: 5px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-size: 13px;
+}
+.viewer-paging {
+  gap: 5px;
+}
+.viewer-paging button {
+  border: 1px solid #9ca38c;
+}
+@media (max-width: 760px) {
+  .album-heading {
+    display: block;
+    margin-bottom: 18px;
+  }
+  .album-heading > p {
+    margin-top: 9px;
+    max-width: 42ch;
+  }
+  .album-chapters {
+    margin-left: 8px;
+    gap: 3px;
+  }
+  .album-chapters button {
+    min-height: 42px;
+    padding: 7px 9px;
+  }
+  .album-spread {
+    grid-template-rows: auto auto;
+    padding: 20px 13px;
+    gap: 17px 9px;
+    border-width: 4px 4px 6px;
+    background: var(--paper) url("/images/journal/paper.webp");
+  }
+  .album-print:first-child {
+    grid-column: 1/-1;
+    grid-row: 1;
+    width: 87%;
+  }
+  .album-print:first-child .print-image {
+    aspect-ratio: 1.55;
+  }
+  .album-print:nth-child(2),
+  .album-print:nth-child(3) {
+    width: 100%;
+    align-self: start;
+  }
+  .album-print:not(:first-child) .print-image {
+    aspect-ratio: 1.4;
+  }
+  .print-caption {
+    font-size: 16px;
+  }
+  .print-location {
+    font-size: 9px;
+    letter-spacing: 0.03em;
+  }
+  .album-botanical {
+    top: 8%;
+    right: 0;
+    width: 17%;
+  }
+  .viewer-details {
+    align-items: start;
+    gap: 5px;
+  }
+  .viewer-paging {
+    gap: 2px;
+  }
+  .viewer-paging button {
+    width: 37px;
+    height: 37px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .album-print {
+    transition: none;
+  }
+  .album-print:hover,
+  .album-print:focus-visible {
+    translate: 0;
+  }
+}
