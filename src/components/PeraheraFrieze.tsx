@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { Pause, Play } from "lucide-react";
 import "./perahera.css";
 
 const plate = "/images/journal/dalada-perahera.svg";
@@ -18,15 +19,11 @@ function Vine({ mirrored = false }: { mirrored?: boolean }) {
 
 export function PeraheraFrieze() {
   const figure = useRef<HTMLElement>(null);
-  const [kindled, setKindled] = useState(false);
+  const [inView, setInView] = useState(false);
+  const [paused, setPaused] = useState(false);
   useEffect(() => {
     if (!figure.current || !("IntersectionObserver" in window)) return;
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setKindled(true);
-        observer.disconnect();
-      }
-    }, { threshold: 0.45 });
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting));
     observer.observe(figure.current);
     return () => observer.disconnect();
   }, []);
@@ -35,9 +32,11 @@ export function PeraheraFrieze() {
     <figure id="perahera" ref={figure} className="wrap perahera-frieze">
       <div className="perahera-panorama">
         <Vine />
-        <svg className="perahera-print" viewBox="0 0 1490 497" role="img" aria-labelledby="perahera-description" data-kindled={kindled}>
+        <svg id="procession-art" className="perahera-print" viewBox="0 0 1490 497" role="img" aria-labelledby="perahera-description" data-moving={inView && !paused}>
           <title id="perahera-description">Torchbearers, standard bearers, a tusker carrying the ceremonial casket, Kandyan dancers and drummers in procession.</title>
           <use href={`${plate}#figures`} />
+          <use className="perahera-banner" href={`${plate}#first-banner`} />
+          <use className="perahera-banner banner-second" href={`${plate}#second-banner`} />
           <use className="perahera-flame" href={`${plate}#left-flame`} />
           <use className="perahera-flame flame-right" href={`${plate}#right-flame`} />
         </svg>
@@ -46,6 +45,16 @@ export function PeraheraFrieze() {
       <figcaption>
         <span className="perahera-name">Dalada Perahera</span>
         <span className="perahera-place">Kandy, Sri Lanka</span>
+        <button
+          type="button"
+          className="perahera-motion"
+          aria-controls="procession-art"
+          aria-label={paused ? "Play procession animation" : "Pause procession animation"}
+          title={paused ? "Play animation" : "Pause animation"}
+          onClick={() => setPaused((current) => !current)}
+        >
+          {paused ? <Play size={13} aria-hidden="true" /> : <Pause size={13} aria-hidden="true" />}
+        </button>
       </figcaption>
     </figure>
   );
