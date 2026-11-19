@@ -1,18 +1,18 @@
 @import "tailwindcss";
 @font-face {
   font-family: Baskervville;
-  src: url("@fontsource/baskervville/files/baskervville-latin-400-normal.woff2");
+  src: url("../../node_modules/@fontsource/baskervville/files/baskervville-latin-400-normal.woff2");
   font-display: swap;
 }
 @font-face {
   font-family: Baskervville;
-  src: url("@fontsource/baskervville/files/baskervville-latin-400-italic.woff2");
+  src: url("../../node_modules/@fontsource/baskervville/files/baskervville-latin-400-italic.woff2");
   font-style: italic;
   font-display: swap;
 }
 @font-face {
   font-family: DM Sans;
-  src: url("@fontsource/dm-sans/files/dm-sans-latin-500-normal.woff2");
+  src: url("../../node_modules/@fontsource/dm-sans/files/dm-sans-latin-500-normal.woff2");
   font-weight: 100 600;
   font-display: swap;
 }
@@ -560,6 +560,7 @@ footer nav {
   font-size: clamp(2rem, 3vw, 3rem);
 }
 .inquiry > label,
+.inquiry > .quote-package,
 .inquiry > fieldset,
 .inquiry > .edits {
   margin: 22px 0;

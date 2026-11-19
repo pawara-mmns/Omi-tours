@@ -1,13 +1,15 @@
 import { InquiryForm } from "@/components/InquiryForm";
 import { experiences } from "@/data/experiences";
+import { packages } from "@/data/packages.mjs";
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Plan my trip" };
 export default async function Page({
   searchParams,
 }: {
-  searchParams: Promise<{ interest?: string }>;
+  searchParams: Promise<{ interest?: string; package?: string }>;
 }) {
-  const slug = (await searchParams).interest;
+  const params = await searchParams;
+  const tour = packages.find((item) => item.id === params.package);
   return (
     <main className="wrap inner" id="main">
       <div className="plangrid">
@@ -35,7 +37,9 @@ export default async function Page({
           </p>
         </div>
         <InquiryForm
-          interest={experiences.find((x) => x.slug === slug)?.slug || ""}
+          key={tour?.id || params.interest || "custom"}
+          tour={tour}
+          interest={experiences.find((x) => x.slug === params.interest)?.slug || ""}
         />
       </div>
     </main>

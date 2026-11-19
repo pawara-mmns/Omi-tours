@@ -1,0 +1,55 @@
+.private-packages {
+  border-top: 3px double #9a9c82;
+  padding-block: clamp(32px, 4vw, 65px);
+  scroll-margin-top: 14px;
+}
+.packages-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+.packages-heading > p {
+  max-width: 40ch;
+  font: italic clamp(16px, 1.35vw, 21px)/1.45 var(--serif);
+}
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 30px);
+}
+.package-card {
+  --wash: #dfe4ce;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #a9a98f;
+  box-shadow: 0 3px 6px #51483113;
+  background: #fbf5e9;
+}
+.package-card:nth-child(2) { --wash: #efe1c9; }
+.package-card:nth-child(3) { --wash: #d9e5dd; }
+.package-face {
+  position: relative;
+  padding: 18px clamp(16px, 1.65vw, 29px) 20px;
+  background: linear-gradient(110deg, var(--wash), transparent 200%), url("/images/journal/paper.webp");
+  border-bottom: 3px double #a9a98f;
+}
+.package-kind { font: 600 11px/1.5 var(--sans); text-transform: uppercase; letter-spacing: .14em; }
+.package-face img { height: clamp(75px, 7.8vw, 108px); width: 100%; object-fit: contain; object-position: right; }
+.package-length { color: #43533e; font: italic 16px/1.4 var(--serif); }
+.package-face h3 { margin: 6px 0 9px; font-size: clamp(1.65rem, 2.2vw, 2.65rem); }
+.package-route { font: 500 14px/1.5 var(--sans); }
+.package-details { padding: 18px clamp(16px, 1.65vw, 29px); color: #455346; font-size: 15px; }
+.package-itinerary { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; text-decoration: underline; text-underline-offset: 4px; }
+.package-stub { margin-top: auto; border-top: 1px dashed #a9a98f; padding: 6px clamp(16px, 1.65vw, 29px); }
+.package-stub .textlink { justify-content: space-between; width: 100%; min-height: 44px; border: 0; }
+.package-custom { display: flex; flex-wrap: wrap; gap: 0 14px; align-items: baseline; justify-content: center; margin-top: 20px; font: italic 19px/1.4 var(--serif); }
+.package-custom a { font: 500 14px/1.4 var(--sans); }
+@media (max-width: 760px) {
+  .packages-heading { display: block; }
+  .packages-heading > p { margin-top: 12px; }
+  .packages-grid { grid-template-columns: 1fr; }
+  .package-face img { position: absolute; width: 84px; height: 58px; right: 16px; top: 10px; }
+  .package-length { margin-top: 20px; }
+}

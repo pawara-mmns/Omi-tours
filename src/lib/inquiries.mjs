@@ -2,6 +2,7 @@ import { DatabaseSync } from "node:sqlite";
 import { mkdirSync } from "node:fs";
 import { resolve, join } from "node:path";
 import { randomUUID } from "node:crypto";
+import { packages } from "../data/packages.mjs";
 
 export const coastNames = [
   "Tangalle",
@@ -74,6 +75,10 @@ export function validateInquiry(input) {
   }
   if (input.consent !== true)
     throw Error("Confirm OMI may use your details for this inquiry.");
+  const packageId = field("packageId", 80);
+  if (packageId && !packages.some((tour) => tour.id === packageId))
+    throw Error("Choose a package from the island guide.");
+  const destinations = field("destinations", 300);
   return {
     name,
     email,
@@ -86,6 +91,8 @@ export function validateInquiry(input) {
     notes: field("notes", 2000),
     accommodation: field("accommodation", 160),
     consent: true,
+    ...(packageId && { packageId }),
+    ...(destinations && { destinations }),
   };
 }
 export function openDatabase(

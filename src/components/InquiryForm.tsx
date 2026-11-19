@@ -4,10 +4,12 @@ import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import journey from "@/data/journey.json";
 import { experiences } from "@/data/experiences";
+import { islandJourneyId, type packages } from "@/data/packages.mjs";
 import { usePreferences } from "@/lib/preferences";
 
-export function InquiryForm({ interest }: { interest: string }) {
+export function InquiryForm({ interest, tour }: { interest: string; tour?: (typeof packages)[number] }) {
   const { prefs, update, ready } = usePreferences();
+  const useJourneyEdits = !tour || tour.id === islandJourneyId;
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [receipt, setReceipt] = useState("");
@@ -30,7 +32,9 @@ export function InquiryForm({ interest }: { interest: string }) {
       interests: form.getAll("interests"),
       notes: text("notes"),
       consent: form.has("consent"),
-      ...prefs,
+      ...(useJourneyEdits ? prefs : { coast: "", edits: {} }),
+      packageId: tour?.id,
+      destinations: text("destinations"),
     });
     try {
       if (!key.current || prev.current !== payload) {
@@ -76,6 +80,7 @@ export function InquiryForm({ interest }: { interest: string }) {
   return (
     <form className="inquiry" onSubmit={submit}>
       <h2>Your travel details</h2>
+      {tour && <p className="quote-package">Your starting route · <strong>{tour.title}</strong></p>}
       <p className="hint">Fields marked * are required.</p>
       <div className="fieldgrid">
         <label>
@@ -116,11 +121,11 @@ export function InquiryForm({ interest }: { interest: string }) {
             min={1}
             max={180}
             step={1}
-            defaultValue={10}
+            defaultValue={tour?.days ?? 10}
             required
           />
         </label>
-        <label>
+        {useJourneyEdits && <label>
           Beach drop-off
           <select
             value={prefs.coast}
@@ -132,8 +137,12 @@ export function InquiryForm({ interest }: { interest: string }) {
               <option key={c.name}>{c.name}</option>
             ))}
           </select>
-        </label>
+        </label>}
       </div>
+      <label>
+        Destinations you’d like to visit
+        <input name="destinations" maxLength={300} defaultValue={tour?.route} placeholder="Towns, regions or stops you have in mind" />
+      </label>
       <fieldset>
         <legend>What draws you to Sri Lanka?</legend>
         <div className="checkgrid">
@@ -143,7 +152,7 @@ export function InquiryForm({ interest }: { interest: string }) {
                 type="checkbox"
                 name="interests"
                 value={x.slug}
-                defaultChecked={interest === x.slug}
+                defaultChecked={interest === x.slug || tour?.interests.includes(x.slug)}
               />
               {x.theme}
             </label>
@@ -158,7 +167,7 @@ export function InquiryForm({ interest }: { interest: string }) {
           placeholder="Hotel style, meal plan or room needs"
         />
       </label>
-      {Object.values(prefs.edits).some((v) => v.trim()) && (
+      {useJourneyEdits && Object.values(prefs.edits).some((v) => v.trim()) && (
         <div className="edits">
           <h3>Your itinerary changes</h3>
           {Object.entries(prefs.edits)

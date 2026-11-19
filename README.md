@@ -32,9 +32,11 @@ For a production build, run `npm run build` and `npm start`. Use `npm test` for 
 
 The supplied four-page OMI agenda dated 16–25 January 2027 supplies the actual ten-day route, optional temple stop, two breakfast-only Ella nights, park visits and five drop-offs. Timings are sample estimates. Beach extensions are outside the nine nights. No customer dates, bookings, prices, ratings or registration claims are published. Experience cards are themes from the sample itinerary.
 
-Three visual directions were explored: The Living Island, The Ceylon Field Journal and The Island Atlas. The selected second direction, The Ceylon Field Journal, uses a linen binding, botanical sketches and a mounted railway scene. The railway scene and sketches are AI-generated editorial artwork. Each day in the illustrated route opens its actual itinerary entry. The mark and other destination imagery are extracted from the supplied agenda. Confirm publication rights before public launch. The route outline uses Natural Earth via world-atlas. The lines indicate the stop sequence. They are not driving directions.
+Three visual directions were explored: The Living Island, The Ceylon Field Journal and The Island Atlas. The selected second direction, The Ceylon Field Journal, uses a linen binding, botanical sketches and a mounted railway scene. The railway scene and sketches are AI-generated editorial artwork. The island guide uses the ten leading destinations listed in section 5.1 of the [SLTDA 2024–2025 visitor survey](https://www.sltda.gov.lk/storage/common_media/SurveyReport2024-2025.pdf#page=55). Each destination opens its own field note and has a distinct engraved illustration. The mark and other destination imagery are extracted from the supplied agenda. Confirm publication rights before public launch. The route outline uses Natural Earth via world-atlas. The lines indicate the stop sequence. They are not driving directions.
 
 ## Project layout
+
+The private packages section below the gallery uses `src/data/packages.mjs`. It presents the supplied ten-day itinerary alongside two suggested shorter routes. Each quote link carries the route, suggested length and interests into the editable inquiry. The owner can see the selected package ID and the requested destinations with the inquiry details.
 
 - `src/app` contains the pages, metadata, global styles and server inquiry endpoint.
 - `src/components` contains the shared header, hero, experience cards, itinerary, route map and form.

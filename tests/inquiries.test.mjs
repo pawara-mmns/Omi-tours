@@ -40,11 +40,20 @@ for (const [key, value] of Object.entries({
   edits: { 11: "extra" },
   consent: false,
   notes: "x".repeat(2001),
+  packageId: "unknown-trip",
+  destinations: "x".repeat(301),
 })) {
   test("rejects invalid " + key, () =>
     assert.throws(() => validateInquiry({ ...sample, [key]: value })),
   );
 }
+test("keeps the starting package and the traveler's revised route in the quote", () => {
+  const quote = validateInquiry({ ...sample, packageId: "temples-and-tea", destinations: " Kandy and Ella ", duration: 7 });
+  assert.equal(quote.packageId, "temples-and-tea");
+  assert.equal(quote.destinations, "Kandy and Ella");
+  assert.equal(quote.duration, 7);
+  assert.ok(!("packageId" in validateInquiry(sample)));
+});
 test("same request survives reopening, retries once and protects prior details", () => {
   const dir = mkdtempSync(join(tmpdir(), "omi-test-"));
   let db = openDatabase(dir);

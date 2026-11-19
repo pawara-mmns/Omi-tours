@@ -1,15 +1,17 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { JournalRoute } from "@/components/JournalRoute";
+import { DestinationGuide } from "@/components/DestinationGuide";
 import { Hero } from "@/components/Hero";
 import { ExperienceSection } from "@/components/Experiences";
 import { PhotoAlbum } from "@/components/PhotoAlbum";
+import { PeraheraFrieze } from "@/components/PeraheraFrieze";
+import { PrivatePackages } from "@/components/PrivatePackages";
 import journey from "@/data/journey.json";
 export default function Home() {
   return (
     <main id="main" className="journal-home">
       <Hero />
-      <JournalRoute />
+      <DestinationGuide />
       <ExperienceSection />
       <section className="feature">
         <div className="wrap featuregrid">
@@ -38,22 +40,8 @@ export default function Home() {
         </div>
       </section>
       <PhotoAlbum />
-      <section className="wrap invitation">
-        <p className="kicker">
-          <span />
-          Tailor-made travel
-        </p>
-        <h2>
-          Where would you <em>linger?</em>
-        </h2>
-        <p>
-          A second morning in the hills, a slower road to Kandy, a beach of your
-          own choosing. Tell us what matters to you.
-        </p>
-        <Link className="btn dark" href="/plan">
-          Plan my trip <ArrowRight size={18} />
-        </Link>
-      </section>
+      <PeraheraFrieze />
+      <PrivatePackages />
     </main>
   );
 }

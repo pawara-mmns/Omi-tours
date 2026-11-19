@@ -3,6 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, ChevronDown, MapPin, Moon } from "lucide-react";
 import journey from "@/data/journey.json";
+import { islandJourneyId } from "@/data/packages.mjs";
 import { usePreferences } from "@/lib/preferences";
 import { RouteMap } from "./RouteMap";
 export function Journey({ initialDay }: { initialDay: number }) {
@@ -104,7 +105,7 @@ export function Journey({ initialDay }: { initialDay: number }) {
               " added to your quote request."
             : "Your choices carry through to the quote request."}
         </p>
-        <Link className="btn dark" href="/plan">
+        <Link className="btn dark" href={`/plan?package=${islandJourneyId}`}>
           Request a quote <ArrowRight size={17} />
         </Link>
       </div>
