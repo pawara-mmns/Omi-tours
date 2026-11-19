@@ -44,6 +44,10 @@
 .package-itinerary { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; text-decoration: underline; text-underline-offset: 4px; }
 .package-stub { margin-top: auto; border-top: 1px dashed #a9a98f; padding: 6px clamp(16px, 1.65vw, 29px); }
 .package-stub .textlink { justify-content: space-between; width: 100%; min-height: 44px; border: 0; }
+.package-cover-link::after { content: ""; position: absolute; inset: 0; }
+.package-face:focus-within { outline: 3px solid var(--brass); outline-offset: -3px; }
+.package-face:hover h3 { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .15em; }
+.package-quote-link { display: inline-flex; align-items: center; min-height: 38px; font-size: 13px; text-decoration: underline; text-underline-offset: 3px; }
 .package-custom { display: flex; flex-wrap: wrap; gap: 0 14px; align-items: baseline; justify-content: center; margin-top: 20px; font: italic 19px/1.4 var(--serif); }
 .package-custom a { font: 500 14px/1.4 var(--sans); }
 @media (max-width: 760px) {

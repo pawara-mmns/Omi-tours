@@ -183,12 +183,12 @@ export function InquiryForm({ interest, tour }: { interest: string; tour?: (type
         </div>
       )}
       <label>
-        Anything else to include?
+        {tour ? "Which inclusions or route changes would you like?" : "Anything else to include?"}
         <textarea
           name="notes"
           rows={3}
           maxLength={2000}
-          placeholder="Tell us about your pace, budget or places you’d love to see."
+          placeholder={tour ? "For example, include entrance fees, add a hotel night or skip a stop." : "Tell us about your pace, budget or places you’d love to see."}
         />
       </label>
       <label className="check consent">

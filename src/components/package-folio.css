@@ -1,0 +1,59 @@
+.folio-page { padding-block: clamp(18px, 2vw, 32px) clamp(44px, 6vw, 92px); }
+.folio-back { color: var(--muted); }
+.folio-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 17px 24px;
+  margin: 22px 0 0;
+  border-bottom: 3px double #9a9c82;
+  padding-bottom: clamp(18px, 2.3vw, 32px);
+}
+.folio-heading h1 { font-size: clamp(2.6rem, 5.2vw, 6rem); }
+.folio-route { margin-top: 12px; font: italic clamp(17px, 1.5vw, 23px)/1.4 var(--serif); color: #465941; }
+.folio-spread { display: grid; grid-template-columns: 1.07fr 1fr; align-items: center; gap: clamp(26px, 4.5vw, 78px); padding-block: clamp(22px, 3.3vw, 52px); }
+.folio-plates {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: 12fr 3fr 7fr;
+  grid-template-rows: auto auto;
+  padding: clamp(12px, 1.4vw, 22px);
+  background: linear-gradient(135deg, #69775022, #b9935212), url("/images/journal/paper.webp");
+  border: 1px solid #b9b69e;
+}
+.folio-print {
+  margin: 0;
+  align-self: start;
+  padding: clamp(5px, .65vw, 10px);
+  background: #fffaec;
+  border: 1px solid #cec9b5;
+  box-shadow: 1px 4px 8px #4c412527;
+}
+.folio-print:first-child { grid-column: 1/3; grid-row: 1; transform: rotate(-1.4deg); }
+.folio-print:nth-child(2) { grid-column: 2/4; grid-row: 1/3; align-self: end; z-index: 1; transform: rotate(2deg); }
+.folio-print img { display: block; width: 100%; height: auto; aspect-ratio: 1.12; object-fit: cover; }
+.folio-print:nth-child(2) img { aspect-ratio: 1.03; }
+.folio-print figcaption { padding: 7px 1px 1px; color: #354735; font: italic clamp(14px, 1.25vw, 20px)/1.2 var(--serif); }
+.folio-engraving { grid-column: 1; grid-row: 2; justify-self: center; width: 42%; height: clamp(40px, 4.6vw, 76px); margin-top: 8px; object-fit: contain; }
+.folio-inclusions h2 { font-size: clamp(2rem, 3vw, 3.6rem); }
+.folio-inclusions > p { color: var(--muted); margin: 10px 0 16px; }
+.folio-inclusions ul { list-style: none; padding: 0; margin: 0; }
+.folio-inclusions li { display: flex; align-items: start; gap: 12px; padding: 12px 0; border-top: 1px solid #a9ac96; }
+.folio-inclusions li svg { flex: none; margin-top: 5px; color: #657750; }
+.folio-inclusions li h3, .folio-terms dt { font: 400 clamp(19px, 1.45vw, 24px)/1.2 var(--serif); }
+.folio-inclusions li p, .folio-terms dd { margin: 4px 0 0; color: #435043; font-size: 15px; line-height: 1.5; }
+.folio-terms { display: grid; grid-template-columns: 1fr 2.4fr; gap: clamp(14px, 2.5vw, 38px); padding: clamp(18px, 2.5vw, 36px); background: #74855e18; border-block: 1px solid #9bA689; }
+.folio-terms h2 { font-size: clamp(1.7rem, 2.4vw, 2.6rem); }
+.folio-terms dl { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 0; }
+.folio-terms dt { font-size: 20px; }
+.folio-page .plangrid { margin-top: clamp(36px, 4.5vw, 72px); scroll-margin-top: 20px; }
+.folio-page .plangrid h2 { font-size: clamp(2.2rem, 3.4vw, 3.8rem); }
+@media (max-width: 760px) {
+  .folio-spread, .folio-terms { grid-template-columns: 1fr; }
+  .folio-heading { align-items: start; }
+  .folio-heading .btn { min-height: 44px; }
+  .folio-plates { width: min(100%, 540px); margin-inline: auto; }
+  .folio-terms dl { grid-template-columns: 1fr; gap: 14px; }
+}
