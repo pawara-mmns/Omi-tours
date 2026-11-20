@@ -456,3 +456,9 @@ body::before {
     margin-top: 7px;
   }
 }
+.home-guest-journal { display: grid; grid-template-columns: minmax(90px, .55fr) 1.6fr; align-items: center; gap: clamp(17px,4vw,70px); border-top: 3px double #9da388; padding-block: clamp(32px,4vw,65px); }
+.home-guest-journal > img { width: 100%; max-width: 300px; justify-self: center; }
+.home-guest-journal h2 { font-size: clamp(2.2rem,3.8vw,4.3rem); margin-bottom: 12px; }
+.home-guest-journal .actions { margin-top: 15px; }
+@media (min-width: 761px) and (max-width: 1190px) { .mast .mast-motto { display: none; } .mast .navlinks { gap: 16px; } }
+@media (max-width: 560px) { .home-guest-journal { grid-template-columns: 1fr; } .home-guest-journal > img { display: none; } }

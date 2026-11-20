@@ -8,6 +8,7 @@ const nav = [
   ["Our journey", "/journey"],
   ["Gallery", "/#gallery"],
   ["Packages", "/#packages"],
+  ["Guest journal", "/blog"],
   ["About OMI", "/about"],
 ];
 export function Brand() {
@@ -92,6 +93,7 @@ export function Footer() {
           <Link href="/journey">Sample journey</Link>
           <Link href="/#gallery">Gallery</Link>
           <Link href="/#packages">Packages</Link>
+          <Link href="/blog">Guest journal</Link>
           <Link href="/about">About OMI</Link>
           <Link href="/plan">Request a quote</Link>
         </nav>

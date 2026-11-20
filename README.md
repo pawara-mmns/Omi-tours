@@ -36,6 +36,12 @@ Three visual directions were explored: The Living Island, The Ceylon Field Journ
 
 ## Project layout
 
+### Guest travel journal
+
+Travelers can visit `/blog/share` to send text, optional service feedback and up to three JPEG, PNG or WebP photographs (5 MB each). A public byline is optional. Entries and processed photos stay in the same private SQLite database as inquiries. Image processing removes original metadata. Use a persistent Node host and back up the private data directory.
+
+From the project directory, use `npm run admin -- stories` to list submissions and their IDs. Run `npm run admin -- story-review ID` and open the private HTML file it prints to check the story and photographs. Use `npm run admin -- story-status ID published` to make an entry visible, or use `declined` or `pending` to keep it private or withdraw it. The journal reflects changes on the next request. The review files belong in the private data directory.
+
 The private packages section below the gallery uses `src/data/packages.mjs`. It presents the supplied ten-day itinerary alongside two suggested shorter routes. Each quote link carries the route, suggested length and interests into the editable inquiry. The owner can see the selected package ID and the requested destinations with the inquiry details.
 
 - `src/app` contains the pages, metadata, global styles and server inquiry endpoint.

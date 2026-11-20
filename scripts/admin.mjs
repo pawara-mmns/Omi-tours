@@ -8,6 +8,7 @@ import {
 import { join, resolve } from "node:path";
 import { randomUUID, createHash } from "node:crypto";
 import { openDatabase } from "../src/lib/inquiries.mjs";
+import { journalAdmin } from "./journal-admin.mjs";
 
 const source = "src/data/journey.json";
 const dataDir = resolve(process.env.OMI_DATA_DIR || ".private");
@@ -15,9 +16,14 @@ const hash = (text) => createHash("sha256").update(text).digest("hex");
 const [action, argument, value] = process.argv.slice(2);
 function run() {
   if (!action || action === "help") {
+    console.log("Guest journal\n  stories\n  story-review ID\n  story-status ID published|declined|pending\n");
     console.log(
       "OMI owner tools\n  inquiries\n  show REFERENCE\n  status REFERENCE new|in-review|quoted|closed\n  draft FILE.json\n  apply FILE.json\n\nDrafts allow edits to the journey title, introduction, day headings and descriptions. Apply saves a backup. Rebuild and restart the website to publish.",
     );
+    return;
+  }
+  if (["stories","story-review","story-status"].includes(action)) {
+    journalAdmin(dataDir,action,argument,value);
     return;
   }
   if (action === "draft") {

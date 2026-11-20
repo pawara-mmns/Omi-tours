@@ -1,0 +1,160 @@
+.journey-atlas {
+  padding-block: clamp(12px, 1.4vw, 23px) clamp(34px, 4.7vw, 78px);
+  background: radial-gradient(ellipse at 45% 0%, #56745d80, transparent 68%),
+    linear-gradient(115deg, #243f32f5, #10392efb 76%), url("/images/journal/paper.webp");
+  border-block: 4px double #a9a57e;
+  scroll-margin-top: 12px;
+}
+.charm-rail {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 3px;
+  margin-bottom: clamp(13px, 1.7vw, 29px);
+  --charm-height: clamp(66px, 7.7vw, 122px);
+}
+.charm-rail::before {
+  content: "";
+  position: absolute;
+  inset: 2px 0 auto;
+  height: 4px;
+  border-radius: 100%;
+  background: linear-gradient(#897545, #f4dba0 38%, #a18a56 65%, #53412e);
+  box-shadow: 0 2px 3px #081d16;
+}
+.charm-hook {
+  position: relative;
+  width: min(23%, 150px);
+  height: calc(var(--charm-height) * 1.06 + 24px);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: grab;
+}
+.charm-hook:active { cursor: grabbing; }
+.charm-hook:focus-visible { outline: 2px solid #f3d799; outline-offset: 3px; border-radius: 5px; }
+.charm-hook::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: -4px;
+  left: calc(50% - 4px);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 36% 27%, #fff0b9, #ab8347 45%, #4a3c2c 85%);
+  box-shadow: 1px 2px 2px #10261b;
+}
+.charm-drop {
+  display: flex;
+  position: absolute;
+  inset: 0 0 auto;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: 50% 0;
+  transform: rotate(var(--rest));
+  pointer-events: none;
+  filter: drop-shadow(2px 4px 2px #0a201c8f);
+}
+.charm-cord {
+  width: 3px;
+  height: var(--cord);
+  border-radius: 2px;
+  background: repeating-linear-gradient(32deg,#987a47 0 2px,#efcd87 2px 3px,#584a34 3px 4px);
+}
+.charm-drop img { width: auto; max-width: none; height: calc(var(--charm-height) * var(--size)); margin-top: -2px; }
+@media (max-width: 480px) {
+  .charm-rail { --charm-height: clamp(50px, 15.3vw, 69px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .charm-drop { transform: rotate(var(--rest)) !important; }
+}
+.atlas-sheet {
+  display: grid;
+  grid-template-columns: minmax(0, 1.53fr) minmax(0, 1fr);
+  grid-template-areas: "map copy";
+  gap: clamp(22px, 3vw, 60px);
+  color: #283f31;
+}
+.atlas-copy {
+  grid-area: copy;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  color: #fff7e6;
+  padding: clamp(12px, 1.1vw, 22px) 0;
+}
+.atlas-copy .atlas-eyebrow { color: #edcd8e; }
+.atlas-eyebrow,.atlas-stops-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #705337;
+  font: 600 10px/1.5 var(--sans);
+  text-transform: uppercase;
+  letter-spacing: .17em;
+}
+.atlas-copy h2 { margin-top: 18px; font-size: clamp(40px, 4.4vw, 82px); line-height: .99; }
+.atlas-copy h2 em { display: block; color: #f0d095; }
+.atlas-duration {
+  margin-block: clamp(14px, 1.4vw, 23px);
+  width: 100%;
+  padding-block: 7px;
+  border-block: 1px solid #c2ac795e;
+  font: italic clamp(17px, 1.3vw, 22px)/1.4 var(--serif);
+}
+.atlas-duration span { margin: 0 5px; color: #e3c88b; }
+.atlas-intro { max-width: 36ch; font-size: clamp(15px, 1.1vw, 18px); }
+.atlas-cta { margin-top: clamp(16px, 1.6vw, 25px); }
+.atlas-cartography {
+  grid-area: map;
+  display: grid;
+  grid-template-columns: minmax(0, 1.27fr) minmax(0, .9fr);
+  grid-template-rows: 1fr auto;
+  align-items: center;
+  padding: clamp(16px, 2.1vw, 36px);
+  gap: 12px clamp(4px, 1vw, 16px);
+  border: 1px solid #b3ad8e;
+  box-shadow: 0 3px 0 -1px #c9b996, 0 6px 0 -2px #ece2cb, 0 15px 22px -12px #081a11;
+  background-color: #f5eddb;
+  background-image: linear-gradient(90deg,#6f826115 1px,transparent 1px),linear-gradient(#6f826115 1px,transparent 1px),
+    linear-gradient(90deg,transparent 49.4%,#80755218 49.85%,#fffdeb69 50.1%,transparent 51.2%),url("/images/journal/paper.webp");
+  background-size: 25px 25px,25px 25px,100% 100%,auto;
+}
+.atlas-mount { position: relative; z-index: 1; transform: rotate(-3deg); }
+.atlas-mount figure { margin: 0; padding: clamp(6px,.6vw,10px); background: #fff9e9; border: 1px solid #b8af95; box-shadow: 1px 5px 8px #4b47322e; }
+.atlas-mount figure::before {
+  content: ""; position: absolute; z-index: 1; top: -6px; left: 34%; width: 31%; height: 17px;
+  background: #cfba887d; transform: rotate(3deg); box-shadow: inset 0 1px #f8ecca61;
+}
+.atlas-mount img { display: block; width: 100%; height: auto; aspect-ratio: 1.04; object-fit: cover; }
+.atlas-mount figcaption { display: grid; gap: 1px; padding: 9px 3px 3px; font: italic clamp(15px,1.2vw,20px)/1.25 var(--serif); }
+.atlas-mount figcaption span { font: 600 10px/1.4 var(--sans); color: #755538; letter-spacing: .1em; text-transform: uppercase; }
+.atlas-map .routemap { background: transparent; border: 0; padding: 0; }
+.atlas-map .routemap figcaption { justify-content: center; border: 0; padding: 0; }
+.atlas-map .routemap figcaption .micro { display: none; }
+.atlas-map .routemap figcaption b { font-size: clamp(18px,1.55vw,27px); font-weight: 400; }
+.atlas-map .routemap svg { display: block; width: 100%; height: auto; max-height: 315px; margin: 4px auto; }
+.atlas-map .routemap small { display: block; font: italic 12px/1.35 var(--serif); }
+.atlas-map .maplabels { font-size: 18px; }
+.atlas-stops { grid-column: 1/-1; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; border-top: 1px solid #a7a98e; padding-top: 8px; }
+.atlas-stops > div { display: flex; flex-wrap: wrap; gap: 4px; }
+.atlas-stops button { padding: 6px 11px; min-height: 36px; border: 1px solid transparent; color: #374d38; font: 500 14px/1.4 var(--sans); }
+.atlas-stops button[aria-pressed="true"] { border-color: #89957d; background: #d8dfcd; }
+.atlas-stops button:hover { text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 900px) {
+  .atlas-sheet { grid-template-columns: minmax(0,1.23fr) minmax(0,1fr); }
+  .atlas-copy { padding: 12px 0; }
+  .atlas-stops { gap: 4px 10px; }
+}
+@media (max-width: 720px) {
+  .atlas-sheet { grid-template-columns: minmax(0,1fr); grid-template-areas: "copy" "map"; }
+  .atlas-copy { padding: 2px 0; }
+  .atlas-copy h2 { margin-top: 10px; }
+  .atlas-copy h2 em { display: inline; }
+  .atlas-cartography { padding: 22px 14px 12px; }
+  .atlas-stops-label { width: 100%; }
+  .atlas-stops button { min-height: 44px; }
+}
